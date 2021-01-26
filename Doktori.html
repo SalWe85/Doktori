@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+ <section>
+     <h2>Дом здравља Кучево - Covid 19</h2><br><br>
+<select id="doktori">
+    <option value="">Изабери лекара:</option>
+    <option value="Др Марија Јовановић,0631434288">Марија</option>
+    <option value="Др Сања Стевановић,0694265908">Сања</option>
+    <option value="Др Далиборка Пандуровић,0600915828">Далиборка</option>
+    <option value="Др Новица Илић,0637067578">Новица</option>
+    <option value="Др Дарко Благојевић,063356548">Дарко</option>
+    <option value="Др Раде Зечевић,0692652242">Раде</option>
+    <option value="Др Милош Смоловић,0604560008">Милош</option>
+    <option value="Др Славиша Лукић,0600851555">Славиша</option>
+</select> 
+<select id="tehnicari">
+    <option value="">Изабери тех:</option>
+    <option value="Силардка Богић 0693330170">Силардка</option>
+    <option value="Ивана Крстић 0616025245">Ивана</option>
+    <option value="Славица Смиљанић 0692600951">Славица</option>
+    <option value="Невена Брсановић 063231084">Невена</option>
+    <option value="Жаклина Животић 0616937911">Жаклина</option>
+    <option value="Лела Арсић 0695885323">Лела</option>
+</select> 
+<select id="izdaoRezultat">
+    <option value="">Издао резултат:</option>
+    <option value="Др Марија Јовановић,0631434288">Марија</option>
+    <option value="Др Сања Стевановић,0694265908">Сања</option>
+    <option value="Др Далиборка Пандуровић,0600915828">Далиборка</option>
+    <option value="Др Новица Илић,0637067578">Новица</option>
+    <option value="Др Дарко Благојевић,063356548">Дарко</option>
+    <option value="Др Раде Зечевић,0692652242">Раде</option>
+    <option value="Др Милош Смоловић,0604560008">Милош</option>
+    <option value="Др Славиша Лукић,0600851555">Славиша</option>
+    <option value="Ивана Крстић 0616025245">Ивана</option>
+    <option value="Жаклина Животић 0616937911">Жаклина</option>
+</select> 
+<button onclick="pretraga()">Претражи</button>
+<p class="sivo">Лекар:</p>
+<p id="txtImeDoc" class="copy"></p>
+<p class="sivo">Број лекара:</p>
+<p id="txtBrDoc" class="copy"></p>
+<p class="sivo">Узорковао материјал:</p>
+<p id="txtImeTeh" class="copy"></p>
+<p class="sivo">Место узорковања:</p>
+<p id="txtDz" class="copy"></p>
+<p class="sivo">Издао резултат:</p>
+<p id="txtRez" class="copy"></p>
+</section>
+<style>
+    body {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(to bottom, rgb(126, 168, 230), white);
+        overflow: hidden;
+    }
+    section {
+        position: absolute;
+        border: 3px solid white;
+        padding: 5rem;
+        border-radius: 50px;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0 5px 45px rgba(0, 0, 0, 0.4);
+    }
+    h2 {
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .copy {
+        cursor: pointer;
+        font-weight: bold;
+        }
+    .copy:hover {
+        transform: scale(1.5);
+        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.452);
+    }
+    .copy:active {
+        color: green;
+    }
+    select {
+        position: relative;
+        height: 2rem;
+        width: 8rem;
+        border-radius: 10px;
+        background:rgba(126, 168, 230, 0.4);
+        outline: none;
+        margin: 5px;
+    }
+    select:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+    button {
+        position: relative;
+        height: 2rem;
+        width: 8rem;
+        cursor: pointer;
+        background: rgb(49, 90, 226);
+        color: white;
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        outline: none;
+        overflow: hidden;
+        margin-left:5px;
+    }
+    @keyframes dugme {
+        from {border-top-left-radius:30px;}
+        to {border-top-left-radius: 0px;}
+        from {border-top-right-radius:0px;}
+        to {border-top-right-radius: 30px;}
+        from {border-bottom-right-radius:30px;}
+        to {border-bottom-right-radius: 0px;}
+        from {border-bottom-left-radius:00px;}
+        to {border-bottom-left-radius: 30px;}
+    }
+    button:hover {
+        animation-name: dugme;
+        -webkit-animation-name: dugme;
+        -moz-animation-name: dugme;
+        animation-duration: 1s;
+        -moz-animation-duration: 1s;
+        -webkit-animation-duration: 1s;
+        animation-fill-mode: forwards;
+        -moz-animatio-fill-mode: forwards;
+        -webkit-animation-fill-mode: forwards;
+    }
+    button:active {
+        background: green;
+    }
+    button::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1.5em;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.7);
+        transform: skewX(45deg) translateX(150px);
+        transition: 0.5s;
+    }
+    button:hover:before {
+        transform: skewX(45deg) translateX(-100px);
+    }
+    .sivo {
+        color: gray;
+    }
+
+</style>
+<script>
+    var copy = document.querySelectorAll(".copy"); 
+
+    for (const copied of copy) { 
+        copied.onclick = function() { 
+        document.execCommand("copy"); 
+  };  
+  copied.addEventListener("copy", function(event) { 
+        event.preventDefault(); 
+        if (event.clipboardData) { 
+        event.clipboardData.setData("text/plain", copied.textContent);
+        console.log(event.clipboardData.getData("text"))
+    };
+  });
+};
+
+	 function pretraga() {
+                var x = document.getElementById("doktori").value.split(',')[0];
+                var y = document.getElementById("doktori").value.split(',')[1];
+                var z = document.getElementById("tehnicari").value;
+                var r = document.getElementById("izdaoRezultat").value.split(',')[0];
+               
+               document.getElementById("txtImeDoc").innerHTML = x;
+               document.getElementById("txtBrDoc").innerHTML = y;
+               document.getElementById("txtImeTeh").innerHTML = z;
+               document.getElementById("txtDz").innerHTML = "Дом здравља Кучево";
+               document.getElementById("txtRez").innerHTML = r;
+            }
+
+    </script>
+</body>
+</html>
