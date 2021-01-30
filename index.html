@@ -4,7 +4,8 @@
 </head>
 <body>
  <section>
-     <h2>Дом здравља Кучево - Covid 19</h2><br><br>
+     <div id="divA">
+     <h2>Дом здравља Кучево - Covid 19</h2>
 <select id="doktori">
     <option value="">Изабери лекара:</option>
     <option value="Др Марија Јовановић,0631434288">Марија</option>
@@ -24,9 +25,6 @@
     <option value="Невена Брсановић 063231084">Невена</option>
     <option value="Жаклина Животић 0616937911">Жаклина</option>
     <option value="Лела Арсић 0695885323">Лела</option>
-    <option value="Данијела Марковић 069728501">Данијела</option>
-    <option value="Александра Павловић 0606320074">Александра П</option>
-    <option value="Александра Шутуловић 0637246948">Александра Ш</option>
 </select> 
 <select id="izdaoRezultat">
     <option value="">Издао резултат:</option>
@@ -38,11 +36,12 @@
     <option value="Др Раде Зечевић,0692652242">Раде</option>
     <option value="Др Милош Смоловић,0604560008">Милош</option>
     <option value="Др Славиша Лукић,0600851555">Славиша</option>
-    <option value="Ивана Крстић,0616025245">Ивана</option>
-    <option value="Жаклина Животић,0616937911">Жаклина</option>
-    
+    <option value="Ивана Крстић 0616025245">Ивана</option>
+    <option value="Жаклина Животић 0616937911">Жаклина</option>
 </select> 
 <button onclick="pretraga()">Претражи</button>
+</div>
+<div id="divB">
 <p class="sivo">Лекар:</p>
 <p id="txtImeDoc" class="copy"></p>
 <p class="sivo">Број лекара:</p>
@@ -54,9 +53,9 @@
 <p class="sivo">Издао резултат:</p>
 <p id="txtRez" class="copy"></p>
 </section>
+</div>
 <style>
     body {
-        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -65,13 +64,24 @@
         overflow: hidden;
     }
     section {
-        position: absolute;
-        border: 3px solid white;
-        padding: 5rem;
-        border-radius: 50px;
+        background: white;
+        border-radius: 5px;
         justify-content: center;
         text-align: center;
         box-shadow: 0 5px 45px rgba(0, 0, 0, 0.4);
+    }
+    div {
+    padding: 2rem;        
+    }
+    #divA {
+        margin-top: -3rem;
+        display: block;        
+        border-bottom: 1px solid rgb(187, 186, 186);
+        height: 9rem;
+    }
+    #divB {
+        margin-top: -2rem;
+        text-align: left;
     }
     h2 {
         font-size: 40px;
@@ -82,98 +92,48 @@
         font-weight: bold;
         }
     .copy:hover {
-        transform: scale(1.5);
-        text-shadow: 0 5px 10px rgba(0, 0, 0, 0.452);
-	transition: 0.5s;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.452);
     }
     .copy:active {
         color: white;
     }
     select {
-        position: relative;
         height: 2rem;
         width: 8rem;
-        border-radius: 10px;
+        border-radius: 3px;
         background:rgba(126, 168, 230, 0.4);
         outline: none;
         margin: 5px;
     }
     select:hover {
-        cursor: pointer;
-        transform: scale(1.2);
+        cursor: pointer;  
     }
     button {
-        position: relative;
         height: 2rem;
         width: 8rem;
         cursor: pointer;
-        background: rgb(49, 90, 226);
+        border-radius: 3px;
+        background: rgb(90, 119, 216);
         color: white;
-        border-top-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        outline: none;
-        overflow: hidden;
-        margin-left:5px;
+        outline: none; 
     }
-    @keyframes dugme {
-        from {border-top-left-radius:30px;}
-        to {border-top-left-radius: 0px;}
-        from {border-top-right-radius:0px;}
-        to {border-top-right-radius: 30px;}
-        from {border-bottom-right-radius:30px;}
-        to {border-bottom-right-radius: 0px;}
-        from {border-bottom-left-radius:00px;}
-        to {border-bottom-left-radius: 30px;}
-    }
+    
+   
     button:hover {
-        animation-name: dugme;
-        -webkit-animation-name: dugme;
-        -moz-animation-name: dugme;
-        animation-duration: 1s;
-        -moz-animation-duration: 1s;
-        -webkit-animation-duration: 1s;
-        animation-fill-mode: forwards;
-        -moz-animatio-fill-mode: forwards;
-        -webkit-animation-fill-mode: forwards;
+        transform: scale(0.975);
+        
     }
     button:active {
         background: green;
     }
-    button::before {
-        content: "";
-        position: absolute;
-        height: 100%;
-        width: 1.5em;
-        top: 0;
-        left: 0;
-        background: rgba(255, 255, 255, 0.7);
-        transform: skewX(45deg) translateX(150px);
-        transition: 0.5s;
-    }
-    button:hover:before {
-        transform: skewX(45deg) translateX(-100px);
-    }
+    
     .sivo {
         color: gray;
     }
 
 </style>
 <script>
-    var copy = document.querySelectorAll(".copy"); 
-
-    for (const copied of copy) { 
-        copied.onclick = function() { 
-        document.execCommand("copy"); 
-  };  
-  copied.addEventListener("copy", function(event) { 
-        event.preventDefault(); 
-        if (event.clipboardData) { 
-        event.clipboardData.setData("text/plain", copied.textContent);
-        console.log(event.clipboardData.getData("text"))
-    };
-  });
-};
-
+   
 	 function pretraga() {
                 var x = document.getElementById("doktori").value.split(',')[0];
                 var y = document.getElementById("doktori").value.split(',')[1];
