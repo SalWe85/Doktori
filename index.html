@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
  <section>
@@ -62,7 +64,7 @@
         height: 100vh;
         background: linear-gradient(to bottom, rgb(126, 168, 230), white);
         overflow: hidden;
-	font-family: sans-serif;
+        font-family: 'Inter', sans-serif;
     }
     section {
         background: white;
@@ -118,23 +120,17 @@
         color: white;
         outline: none; 
     }
-    
-   
     button:hover {
         transform: scale(0.975);
-        
     }
     button:active {
         background: green;
     }
-    
     .sivo {
         color: gray;
     }
-
 </style>
 <script>
-   
 	 function pretraga() {
                 var x = document.getElementById("doktori").value.split(',')[0];
                 var y = document.getElementById("doktori").value.split(',')[1];
@@ -147,7 +143,6 @@
                document.getElementById("txtDz").innerHTML = "Дом здравља Кучево";
                document.getElementById("txtRez").innerHTML = r;
             }
-
     </script>
 </body>
 </html>
