@@ -27,6 +27,9 @@
     <option value="Невена Брсановић 063231084">Невена</option>
     <option value="Жаклина Животић 0616937911">Жаклина</option>
     <option value="Лела Арсић 0695885323">Лела</option>
+    <option value="Данијела Марковић 069728501">Данијела</option>
+    <option value="Александра Павловић 0606320074">Александра П</option>
+    <option value="Александра Шутуловић 0637246948">Александра Ш</option>
 </select> 
 <select id="izdaoRezultat">
     <option value="">Издао резултат:</option>
@@ -131,6 +134,19 @@
     }
 </style>
 <script>
+     var copy = document.querySelectorAll(".copy"); 
+    for (const copied of copy) { 
+        copied.onclick = function() { 
+        document.execCommand("copy"); 
+  };  
+  copied.addEventListener("copy", function(event) { 
+        event.preventDefault(); 
+        if (event.clipboardData) { 
+        event.clipboardData.setData("text/plain", copied.textContent);
+        console.log(event.clipboardData.getData("text"))
+    };
+  });
+};
 	 function pretraga() {
                 var x = document.getElementById("doktori").value.split(',')[0];
                 var y = document.getElementById("doktori").value.split(',')[1];
@@ -142,7 +158,7 @@
                document.getElementById("txtImeTeh").innerHTML = z;
                document.getElementById("txtDz").innerHTML = "Дом здравља Кучево";
                document.getElementById("txtRez").innerHTML = r;
-            }
+            }   
     </script>
 </body>
 </html>
